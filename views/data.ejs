@@ -1,0 +1,42 @@
+<%- include('includes/head.ejs') %>
+<link rel="stylesheet" href="./css/table.css">
+</head>
+
+<body style="height:100vh; background-color: #7f5a83; overflow:hidden;
+background-image: linear-gradient(315deg, #7f5a83 0%, #0d324d 74%);
+">
+    <%- include('includes/navigation.ejs') %>
+
+<div style="margin-top:80px;height:85%; overflow:auto">
+    <h3 style=" color:white; text-align: center"><%= file %> File created in root directory</h3>
+    <% if(data) { %>
+    <table >
+        <caption style="text-align: center; color:white">Arrival Data</caption>
+        <thead>
+            <tr>
+                <% for(item of data[0]){ %>
+                    <th scope="col"><%= item %></th>
+                <% } %>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% for(item of data) { %>
+            <tr>
+                <% for(info of item) { %>
+                <td><%= info || ' ' %></td>
+                <% } %>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+    <% } else {%>
+    <h2 style="color:white">Cannot fetch data because of connectivity or other errors. Please try Again</h2>
+    <% } %>
+</div>
+
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+</body>
+
+</html>
